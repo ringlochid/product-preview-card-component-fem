@@ -23,8 +23,11 @@
             --spacing-400: 2rem;
         }
         
+        html,
         body {
-            height: 100svh;
+            margin: 0;
+            padding: 0;
+            min-height: 100svh;
             background: var(--color-cream, #F2EAE2);
             display: grid;
             place-items: center;
@@ -39,19 +42,41 @@
             flex-direction: column;
             background: var(--color-white, #FFF);
             border-radius: var(--spacing-100, 0.5rem);
-            overflow: scroll;
+            overflow: hidden;
+            @media(width >=768px) {
+                width: min(37.5rem, 90svw);
+                height: min(28.5rem, 90svh);
+                flex-direction: row;
+                scrollbar-width: none;
+            }
         }
         
         .image-container {
             width: 100%;
             margin: 0;
             padding: 0;
+            @media(width >=768px) {
+                height: 100%;
+                width: auto;
+            }
         }
         
-        .image-container img {
+        .image-container .img-mobile {
             width: 100%;
             margin: 0;
             padding: 0;
+            @media(width >=768px) {
+                display: none;
+            }
+        }
+        
+        .image-container .img-desktop {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            @media(width <=769px) {
+                display: none;
+            }
         }
         
         .article-container {
@@ -65,6 +90,11 @@
             gap: var(--spacing-300, 1.5rem);
             align-self: stretch;
             background: var(--color-white, #FFF);
+            @media(width >=768px) {
+                height: 100%;
+                width: 18.75rem;
+                place-items: center;
+            }
         }
         
         .article-container h1 {
@@ -166,7 +196,8 @@
 <body>
     <main>
         <div class="image-container">
-            <img src="./images/image-product-mobile.jpg" alt="">
+            <img src="./images/image-product-mobile.jpg" alt="" class="img-mobile">
+            <img src="./images/image-product-desktop.jpg" alt="" class="img-desktop">
         </div>
         <div class="article-container">
             <h1>Perfume</h1>
